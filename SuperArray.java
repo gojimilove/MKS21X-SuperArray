@@ -6,7 +6,7 @@ public class SuperArray{
     data = new String[10];
   }
 
-  public static void clear() {
+  public void clear() {
     size = 0;
   }
 
@@ -19,15 +19,16 @@ public class SuperArray{
     return false;
   }
 
-  public boolean add(String new) {
-    data[size()] = new;
+  public boolean add(String x) {
+    data[size()] = x;
+    size++;
     return true;
   }
 
   public String toString() {
     String result = "[";
     for (int i = 0; i < size(); i++) {
-      result+= data[i];
+      result = result + data[i];
     }
     result += "]";
     return result;
@@ -48,12 +49,12 @@ public class SuperArray{
   	return data[index];
   }
 
-  public String set(int index, String new) {
+  public String set(int index, String x) {
   	String old = "";
   	if (index < 0 || index >= size()) return null;
   	else {
   		old = data[index];
-  		data[index] = new;
+  		data[index] = x;
   		return old;
   	}
   }
