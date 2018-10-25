@@ -20,15 +20,19 @@ public class SuperArray{
   }
 
   public boolean add(String x) {
-    data[size()] = x;
-    size++;
+    if (size() == data.length) return false;
+    else {
+    	data[size()] = x;
+    	size++;
+    }
     return true;
+    
   }
 
   public String toString() {
     String result = "[";
     for (int i = 0; i < size(); i++) {
-      result = result + data[i];
+      result = result + data[i]+ ", ";
     }
     result += "]";
     return result;
