@@ -15,18 +15,15 @@ public class SuperArray{
   }
 
   public boolean isEmpty() {
-    if (size() == 0) return true;
-    return false;
+    return size() == 0;
   }
 
   public boolean add(String x) {
-    if (size() == data.length) return false;
-    else {
-    	data[size()] = x;
-    	size++;
-    }
+    if (size() == data.length) resize();
+    data[size()] = x;
+    size++;
     return true;
-    
+
   }
 
   public String toString() {
@@ -61,6 +58,14 @@ public class SuperArray{
   		data[index] = x;
   		return old;
   	}
+  }
+
+  private void resize() {
+     String[] newArray = new String[size() * 2];
+     for (int i = 0; i < size(); i++) {
+       newArray[i] = data[i];
+     }
+     data = newArray;
   }
 
 }
