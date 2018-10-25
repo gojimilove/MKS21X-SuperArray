@@ -68,4 +68,43 @@ public class SuperArray{
      data = newArray;
   }
 
+  public boolean contains(String target) {
+    for (int i = 0; i < size(); i++) {
+      if (data[i].equals(x)) return true;
+    }
+    return false;
+  }
+
+  public int indexOf(String target) {
+    int index = -1;
+    for (int i = 0; i < size() && index == -1; i++) {
+      if (data[i].equals(target)) index = i;
+    }
+    return index;
+
+  }
+
+  public int lastIndexOf(String target) {
+    int index = -1;
+    for (int i = 0; i < size(); i++) {
+      if (data[i].equals(target)) index = i;
+    }
+    return index;
+  }
+
+  public void add(int index, String x) {
+    //SANITY CHECK
+  }
+
+  public String remove(int index) {
+    //SANITY CHECK
+    return "";
+  }
+
+  public boolean remove(String x) {
+    //SANITY CHECK
+    //return false if x wasn't there to begin with
+    return false;
+  }
+
 }
