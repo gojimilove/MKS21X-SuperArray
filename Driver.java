@@ -3,19 +3,19 @@ public class Driver{
 		SuperArray beef = new SuperArray();
 		/**phase 1 testing start*/
 		System.out.println("Phase 1 testing, start!");
-		
+
 		//testing SuperArray initializing
 		System.out.println("\n!!Testing SuperArray initializing!!");
 		System.out.println("Testing toString(): should return []");
 		System.out.println(beef);
 		System.out.println("\nTesting toStringDebug(): should return [null, ... null]");
 		System.out.println(beef.toStringDebug());
-		
+
 		//testing size()
 		System.out.println("\n\n!!Testing size()!!");
 		System.out.println("Testing size(): should return 0");
 		System.out.println(beef.size());
-		
+
 		//testing add()
 		System.out.println("\n\n!!Testing add()!!");
 		System.out.println("Testing add() while empty: should return true");
@@ -25,12 +25,14 @@ public class Driver{
 		beef.add("cow");
 		System.out.println("\nChecking add() and toString(): should return [red, cow]");
 		System.out.println(beef);
-		for (int x = 0; x < 9; x++){
+		for (int x = 0; x < 8; x++){
 			beef.add("filler");
 		}
-		System.out.println("\n\nTesting add() while full: should return false");
-		System.out.println(beef.add("full"));
-		
+		//testing resize
+		System.out.println("\nTesting resize()");
+		beef.add("full");
+		System.out.println(beef.toStringDebug());
+
 		//testing clear()
 		System.out.println("\n\n!!Testing clear()!!");
 		System.out.println("Testing clear(): should return []");
@@ -43,7 +45,7 @@ public class Driver{
 		System.out.println("\nSeeing SuperArray: should be [red]");
 		System.out.println(beef);
 		beef.clear();
-		
+
 		//testing get()
 		System.out.println("\n\n!!Testing get()!!");
 		System.out.println("Testing get() while empty: should return null");
@@ -58,7 +60,7 @@ public class Driver{
 		System.out.println("\nTesting get() for out of bounds: should return null");
 		System.out.println(beef.get(-1));
 		System.out.println(beef.get(10));
-		
+
 		//testing set()
 		System.out.println("\n\n!!Testing set()!!");
 		System.out.println("Using SuperArray from !!testing get()!!");
@@ -82,5 +84,8 @@ public class Driver{
 		System.out.println("SuperArray should now be []");
 		System.out.println(beef);
 		/** phase 1 testing end*/
+
+		//testing resize
+
 	}
 }
