@@ -1,91 +1,113 @@
-public class Driver{
-	public static void main(String[] args){
-		SuperArray beef = new SuperArray();
-		/**phase 1 testing start*/
-		System.out.println("Phase 1 testing, start!");
+public class Driver {
+    public static void main(String[] args) {
 
-		//testing SuperArray initializing
-		System.out.println("\n!!Testing SuperArray initializing!!");
-		System.out.println("Testing toString(): should return []");
-		System.out.println(beef);
-		System.out.println("\nTesting toStringDebug(): should return [null, ... null]");
-		System.out.println(beef.toStringDebug());
+        //PHASE 1NE
+        //PART 1 testing #0,2,3
+        SuperArray mine = new SuperArray();
+        System.out.println("PHASE 1\n\nPart 1\n" + mine.size() + " ?= 0");
+        System.out.println(mine.isEmpty() + " ?= true");
+        String myString = "your";
+        for (int idx = 0; idx < myString.length(); idx++) {
+            mine.add(myString.substring(idx, idx + 1));
+        }
+        System.out.println(mine.add("ssss") + " ?= true");
+        System.out.println(mine.size() + " ?= 5");
+        System.out.println(mine.isEmpty() + " ?= false\n");
+        //PART 2 testing #4,5
+        System.out.println("Part 2\n" + mine + " ?= [y, o, u, r, ssss]");
+        System.out.println(mine.get(4) + mine.get(1) + mine.get(2) + mine.get(3) + " ?= ssssour");
+        System.out.println(mine.get(5) + " ?= null");
+        System.out.println(mine.get(6) + "" + mine.get(7) + " ?= nullnull");
+        System.out.println("YOU SHOULD SEE 3 ERROR MESSAGES ABOVE (error, null, error, error, nullnull)");
+        System.out.println(mine.toStringDebug() + " ?= [y, o, u, r, ssss, null, null, null, null, null]\n");
+        //PART 3 testing #1,6
+        System.out.println("Part 3\n" + mine.set(0, "ssss") + mine.set(3, "pp") + " ?= yr");
+        System.out.println(mine + " ?= [ssss, o, u, pp, ssss]");
+        mine.clear(); //byebye mine you will be gladly missed :(((
+        System.out.println(mine.size() + " ?= 0");
+        System.out.println(mine.get(0) + " ?= null (with one error beforehand)\n\nPHASE 2\n\nPart 1");
 
-		//testing size()
-		System.out.println("\n\n!!Testing size()!!");
-		System.out.println("Testing size(): should return 0");
-		System.out.println(beef.size());
+        //PHASE 2WOO
+        //PART 1 testing #3,7 once
+        String KsString = "supercalifragilisticexpialidocious";
+        SuperArray ligma = new SuperArray();
+        for (int idx = 0; idx < 10; idx++) {
+            ligma.add(KsString.substring(idx, idx + 1));
+        }
+        System.out.println(ligma.toStringDebug() + " ?= [s, u, p, e, r, c, a, l, i, f]"); //NO NULLS HERE
+        ligma.add(KsString.substring(10, 11));
+        System.out.println(ligma.size() + " ?= 11");
+        System.out.println(ligma.toStringDebug() + " ?= [s, u, p, e, r, c, a, l, i, f, r, null,..., null]\nyes you have to count the nulls\nit depends on how you made your resize\nif you made it so when you resize it * 2, there should be 9 nulls\nif you made it so when you resize it * 2 + 1, there should be 10 nulls\nif you made it so when you resize it + 1, there should be 0 nulls");
+        for (int idx = 11; idx < KsString.length(); idx++) {
+            ligma.add(KsString.substring(idx, idx + 1));
+        }
+        System.out.println(ligma.size() + " ?= 34");
+        System.out.println(ligma + " ?= it should spell super...docious");
+        int count = 0;
+        for (int idx = 0; idx < ligma.toStringDebug().length() - 3; idx++) {
+            if (ligma.toStringDebug().substring(idx, idx + 4).equals("null")) {
+                count++;
+            }
+        }
+        System.out.println(count + " ?= using same rules as last time, should be 6, 9, or 0\n\nPart 2");
+        //I hate the word supercalifragilisticexpialidocious now why does this word exist?????
+        //PART 2 testing #3,7 again! i think? It's easier to pass I think
+        SuperArray omg = new SuperArray();
+        for (int idx = 0; idx < 20; idx += 2) {
+            omg.add(idx + "");
+        }
+        System.out.println(omg.size() + " ?= 10");
+        System.out.println(omg + " ?= [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]");
+        String wth = "pleasedontfailme";
+        for (int idx = 0; idx < wth.length() - 1; idx += 2) {
+            omg.add(wth.substring(idx, idx + 2));
+        }
+        System.out.println(omg.size() + " ?= 18\n\nPHASE 3\n\nPart 1");
 
-		//testing add()
-		System.out.println("\n\n!!Testing add()!!");
-		System.out.println("Testing add() while empty: should return true");
-		System.out.println(beef.add("red"));
-		System.out.println("\nChecking add() and toString(): should return [red]");
-		System.out.println(beef);
-		beef.add("cow");
-		System.out.println("\nChecking add() and toString(): should return [red, cow]");
-		System.out.println(beef);
-		for (int x = 0; x < 8; x++){
-			beef.add("filler");
-		}
-		//testing resize
-		System.out.println("\nTesting resize()");
-		beef.add("full");
-		System.out.println(beef.toStringDebug());
-
-		//testing clear()
-		System.out.println("\n\n!!Testing clear()!!");
-		System.out.println("Testing clear(): should return []");
-		beef.clear();
-		System.out.println(beef);
-		System.out.println("\nTesting clear() and size(): should return 0");
-		System.out.println(beef.size());
-		System.out.println("\nTesting add(\"red\") after clear(): should return true");
-		System.out.println(beef.add("red"));
-		System.out.println("\nSeeing SuperArray: should be [red]");
-		System.out.println(beef);
-		beef.clear();
-
-		//testing get()
-		System.out.println("\n\n!!Testing get()!!");
-		System.out.println("Testing get() while empty: should return null");
-		System.out.println(beef.get(0));
-		beef.add("red");
-		beef.add("cow");
-		beef.add("meat");
-		System.out.println("\nTesting get() with indices 0-2 filled: should return values *check code*");
-		System.out.println(beef.get(0));
-		System.out.println(beef.get(1));
-		System.out.println(beef.get(2));
-		System.out.println("\nTesting get() for out of bounds: should return null");
-		System.out.println(beef.get(-1));
-		System.out.println(beef.get(10));
-
-		//testing set()
-		System.out.println("\n\n!!Testing set()!!");
-		System.out.println("Using SuperArray from !!testing get()!!");
-		System.out.println(beef);
-		System.out.println("\nTesting set(0, \"blue\"): should return red");
-		System.out.println(beef.set(0, "blue"));
-		System.out.println("SuperArray should now be [blue, cow, meat]");
-		System.out.println(beef);
-		System.out.println("\nTesting set(1, \"fish\"): should return cow");
-		System.out.println(beef.set(1, "fish"));
-		System.out.println("SuperArray should now be [blue, fish, meat]");
-		System.out.println(beef);
-		System.out.println("\nTesting set(2, \"vegetal\"): should return meat");
-		System.out.println(beef.set(2, "vegetal"));
-		System.out.println("SuperArray should now be [blue, fish, vegetal]");
-		System.out.println(beef);
-		System.out.println("\nUsing empty SuperArray ");
-		beef.clear();
-		System.out.println("\nTesting set(2, \"vegetal\"): should return null");
-		System.out.println(beef.set(2, "vegetal"));
-		System.out.println("SuperArray should now be []");
-		System.out.println(beef);
-		/** phase 1 testing end*/
-
-		//testing resize
-
-	}
+        //PHASE 3HREEEE
+        //PART 1 testing #8, 9
+        SuperArray almostDone = new SuperArray();
+        String alphabet = "abcdefghijklmnopqrst";
+        for (int idx = 0; idx < alphabet.length() - 1; idx += 2) {
+            almostDone.add(alphabet.substring(idx, idx + 2));
+        }
+        System.out.println(almostDone);
+        System.out.println(almostDone.contains("op") + " ?= true");
+        System.out.println(almostDone.contains("fg") + " ?= false");
+        System.out.println(almostDone.indexOf("op") + " ?= 7");
+        System.out.println(almostDone.indexOf("fg") + " ?= -1");
+        SuperArray herether = new SuperArray();
+        for (int idx = 0; idx < 15; idx++) {
+            herether.add(idx % 4 + "");
+        }
+        System.out.println(herether.lastIndexOf("3") + " ?= 11");
+        System.out.println(herether.lastIndexOf("4") + " ?= -1");
+        System.out.println(herether.lastIndexOf("0") + " ?= 12\n\nPart 2");
+        //PART 2 testing #8,10
+        almostDone.add(3, "happy birthday to me");
+        System.out.println(almostDone + " ?= [ab, cd, ef, happy birthday to me, gh, ij, kl, mn, op, qr, st]");
+        System.out.println(almostDone.contains("happy birthday to me") + " ?= true");
+        System.out.println(almostDone.size() + " ?= 11");
+        almostDone.add(11, "sad day to you");
+        System.out.println(almostDone.size() + " ?= 12");
+        System.out.println(almostDone + " ?= [ab, cd, ef, happy birthday to me, gh, ij, kl, mn, op, qr, st, sad day to you]");
+        almostDone.add(21, "oh no");
+        System.out.println("There should be error message above");
+        System.out.println(almostDone.size() + " ?= 12\n\nPart3");
+        //PART 3 testing #8,11
+        System.out.println(almostDone.remove(11) + " ?= sad day to you");
+        System.out.println(almostDone.size() + " ?= 11");
+        System.out.println(almostDone.remove(3) + " ?= happy birthday to me");
+        System.out.println(almostDone.size() + " ?= 10");
+        System.out.println(almostDone + " ?= [ab, cd, ef, gh, ij, kl, mn, op, qr, st]");
+        System.out.println(almostDone.remove(69) + " ?= null");
+        System.out.println("There should be error message 2 lines above\n" + almostDone.size() + " ?= 10");
+        //PART 4 testing #12
+        System.out.println(almostDone.remove("cd") + " ?= true");
+        System.out.println(almostDone.size() + " ?= 9");
+        System.out.println(almostDone + "[ab, ef, gh, ij, kl, mn, op, qr, st]");
+        System.out.println(almostDone.remove("fg") + " ?= false");
+        System.out.println(almostDone.size() + " ?= 9");
+        System.out.println(almostDone + "[ab, ef, gh, ij, kl, mn, op, qr, st]");
+    }
 }
