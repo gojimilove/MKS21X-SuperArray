@@ -38,7 +38,7 @@ public class SuperArray{
   public String toStringDebug() {
   	String result = "[";
     for (int i = 0; i < data.length; i++) {
-    	if (data[i] == null) result+= "null, ";
+    	if (data[i] == null) result = result + null + ", ";
       else result = result + data[i] + ", ";
     }
     result += "]";
@@ -70,7 +70,7 @@ public class SuperArray{
 
   public boolean contains(String target) {
     for (int i = 0; i < size(); i++) {
-      if (data[i].equals(x)) return true;
+      if (data[i].equals(target)) return true;
     }
     return false;
   }
@@ -93,7 +93,15 @@ public class SuperArray{
   }
 
   public void add(int index, String x) {
-    //SANITY CHECK
+    resize();
+    if (index < 0 || index > size()) System.out.println("Error: index out of range");
+    else {
+    	for (int i = size(); i > index; i--) {
+    		data[i] = data[i - 1];
+    	}
+    	data[index] = x;
+    	size++;
+    }
   }
 
   public String remove(int index) {
