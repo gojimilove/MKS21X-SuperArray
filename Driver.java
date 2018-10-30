@@ -16,16 +16,34 @@ public class Driver {
         //PART 2 testing #4,5
         System.out.println("Part 2\n" + mine + " ?= [y, o, u, r, ssss]");
         System.out.println(mine.get(4) + mine.get(1) + mine.get(2) + mine.get(3) + " ?= ssssour");
-        System.out.println(mine.get(5) + " ?= null");
-        System.out.println(mine.get(6) + "" + mine.get(7) + " ?= nullnull");
-        System.out.println("YOU SHOULD SEE 3 ERROR MESSAGES ABOVE (error, null, error, error, nullnull)");
+        
+        
+				//System.out.println(mine.get(5) + " ?= null");
+        //System.out.println(mine.get(6) + "" + mine.get(7) + " ?= nullnull");
+        //System.out.println("YOU SHOULD SEE 3 ERROR MESSAGES ABOVE (error, null, error, error, nullnull)");
+        try {
+        	mine.get(5);
+        	mine.get(6);
+        } catch (IndexOutOfBoundsException e) {
+        	System.out.println("CAUGHT A PROBLEM IN MAIN");
+        }
+        
+
         System.out.println(mine.toStringDebug() + " ?= [y, o, u, r, ssss, null, null, null, null, null]\n");
         //PART 3 testing #1,6
         System.out.println("Part 3\n" + mine.set(0, "ssss") + mine.set(3, "pp") + " ?= yr");
         System.out.println(mine + " ?= [ssss, o, u, pp, ssss]");
         mine.clear(); //byebye mine you will be gladly missed :(((
         System.out.println(mine.size() + " ?= 0");
-        System.out.println(mine.get(0) + " ?= null (with one error beforehand)\n\nPHASE 2\n\nPart 1");
+        
+
+        //System.out.println(mine.get(0) + " ?= null (with one error beforehand)\n\nPHASE 2\n\nPart 1");
+        try {
+        	mine.get(0);
+        } catch (IndexOutOfBoundsException e) {
+        	System.out.println("CAUGHT A PROBLEM IN MAIN");
+        }
+
 
         //PHASE 2WOO
         //PART 1 testing #3,7 once
@@ -91,8 +109,17 @@ public class Driver {
         almostDone.add(11, "sad day to you");
         System.out.println(almostDone.size() + " ?= 12");
         System.out.println(almostDone + " ?= [ab, cd, ef, happy birthday to me, gh, ij, kl, mn, op, qr, st, sad day to you]");
-        almostDone.add(21, "oh no");
-        System.out.println("There should be error message above");
+        
+
+        //almostDone.add(21, "oh no");
+        //System.out.println("There should be error message above");
+        try {
+        	almostDone.add(21, "oh no");
+        } catch (IndexOutOfBoundsException e) {
+        	System.out.println("CAUGHT A PROBLEM IN MAIN");
+        }
+        
+
         System.out.println(almostDone.size() + " ?= 12\n\nPart3");
         //PART 3 testing #8,11
         System.out.println(almostDone.remove(11) + " ?= sad day to you");
@@ -100,8 +127,17 @@ public class Driver {
         System.out.println(almostDone.remove(3) + " ?= happy birthday to me");
         System.out.println(almostDone.size() + " ?= 10");
         System.out.println(almostDone + " ?= [ab, cd, ef, gh, ij, kl, mn, op, qr, st]");
-        System.out.println(almostDone.remove(69) + " ?= null");
-        System.out.println("There should be error message 2 lines above\n" + almostDone.size() + " ?= 10");
+        
+
+        //System.out.println(almostDone.remove(69) + " ?= null");
+        //System.out.println("There should be error message 2 lines above\n" + almostDone.size() + " ?= 10");
+        try {
+        	almostDone.remove(69);
+        } catch (IndexOutOfBoundsException e) {
+        	System.out.println("CAUGHT A PROBLEM IN MAIN");
+        }
+
+
         //PART 4 testing #12
         System.out.println(almostDone.remove("cd") + " ?= true");
         System.out.println(almostDone.size() + " ?= 9");
